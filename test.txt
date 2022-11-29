@@ -1,0 +1,4 @@
+Bu aama iin nmap, nikto, gobuster vs. birka arai alabilmek ve varsa aklar hakknda ufak bilgi sahibi olabilmek iin.1
+Bu aama iin nmap, nikto, gobuster vs. birka ara altrdm; makine hakknd aklar hakknda ufak bilgi sahibi olabilmek iin.2
+Bu aama iin nmap, nikt vs. birka ara altrdm; makine hakknda bilgi alabilmek ve varsa aklar hakknda ufak bilgi sahibi olabilmek iin.3
+Bu aama iin nmapmakine hakknda bilgi alabilmek ve varsa aklar hakknda ufak bilgi sahibi olabilmek iin.4

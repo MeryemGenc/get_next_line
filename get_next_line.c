@@ -1,7 +1,7 @@
 #include "get_next_line.h"
 
 
-char *get_next(char *arr) // sonraki satırları dondurur
+static char *get_next(char *arr)
 {
     char *temp;
     int i;
@@ -15,10 +15,10 @@ char *get_next(char *arr) // sonraki satırları dondurur
         free(arr);
         return (NULL);
     }
-    temp = malloc(ft_strlen(arr) - i + 1); // eger son satır degilse kalan satırı dondurur
+    temp = malloc(ft_strlen(arr) - i + 1);
     if(!temp)
         return (NULL);
-    i++; // '\n' i atlar. yani sonraki satıra gecer
+    i++;
     j = 0;
     while (arr[i])
         temp[j++] = arr[i++];
@@ -27,7 +27,7 @@ char *get_next(char *arr) // sonraki satırları dondurur
     return (temp);    
 }
 
-char *get_line(char *arr)
+static char *get_line(char *arr)
 {
     char *line;
     int indx;
@@ -35,9 +35,9 @@ char *get_line(char *arr)
     indx = 0;
     if(!arr[indx])
         return (NULL);
-    while (arr[indx] && arr[indx] != '\n') // neden ft_strlen kullanmadım?
+    while (arr[indx] && arr[indx] != '\n')
         indx++;
-    line = malloc(indx + 2); //sikinti olursa (char *) donustur. ya da sizeof(char)*
+    line = malloc(indx + 1);
     if (!line)
         return (NULL);
     indx = 0;
@@ -55,7 +55,7 @@ char *get_line(char *arr)
     return(line);
 }
 
-char *read_arr(int fd, char *arr)
+static char *read_arr(int fd, char *arr)
 {
     char *temp;
     int size;

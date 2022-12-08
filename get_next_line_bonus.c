@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 
 char *get_next(char *arr) // sonraki satırları dondurur
@@ -93,7 +93,7 @@ char *get_next_line(int fd)
     arr = get_next(arr);
     return (line);
 }
-
+/*
 int main()
 {
     int i = open("test.txt",O_RDONLY);
@@ -104,4 +104,4 @@ int main()
     }
     
     return 0;
-} 
+} */

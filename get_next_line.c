@@ -1,7 +1,7 @@
 #include "get_next_line.h"
 
 
-static char *get_next(char *arr)
+char *get_next(char *arr)
 {
     char *temp;
     int i;
@@ -15,7 +15,7 @@ static char *get_next(char *arr)
         free(arr);
         return (NULL);
     }
-    temp = malloc(ft_strlen(arr) - i + 1);
+    temp = (char *)malloc(sizeof(char) * (ft_strlen(arr) - i + 1));
     if(!temp)
         return (NULL);
     i++;
@@ -27,7 +27,7 @@ static char *get_next(char *arr)
     return (temp);    
 }
 
-static char *get_line(char *arr)
+char *get_line(char *arr)
 {
     char *line;
     int indx;
@@ -37,7 +37,7 @@ static char *get_line(char *arr)
         return (NULL);
     while (arr[indx] && arr[indx] != '\n')
         indx++;
-    line = malloc(indx + 1);
+    line = (char *)malloc(sizeof(char) * (indx + 2));
     if (!line)
         return (NULL);
     indx = 0;
@@ -48,19 +48,19 @@ static char *get_line(char *arr)
     }
     if(arr[indx] == '\n')
     {
-        line[indx] = '\n';
+        line[indx] = arr[indx];
         indx++;
     }
     line[indx] = '\0';
     return(line);
 }
 
-static char *read_arr(int fd, char *arr)
+char *read_arr(int fd, char *arr)
 {
     char *temp;
     int size;
-    
-    temp = malloc(BUFFER_SIZE + 1);
+
+    temp = malloc((BUFFER_SIZE + 1) * sizeof(char));
     if (!temp)
         return (NULL);
     size = 1;

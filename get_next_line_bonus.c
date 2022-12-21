@@ -1,7 +1,7 @@
 #include "get_next_line_bonus.h"
 
 
-static char *get_next(char *arr)
+char *get_next(char *arr)
 {
     char *temp;
     int i;
@@ -15,29 +15,30 @@ static char *get_next(char *arr)
         free(arr);
         return (NULL);
     }
-    temp = malloc(ft_strlen(arr) - i + 1);    
-	if(!temp)
+    temp = (char *)malloc(sizeof(char) * (ft_strlen(arr) - i + 1));
+    if (!temp)
         return (NULL);
-    i++;    j = 0;
+    i++;
+    j = 0;
     while (arr[i])
         temp[j++] = arr[i++];
     temp[j] = '\0';
     free(arr);
-    return (temp);    
+    return (temp);
 }
 
-static char *get_line(char *arr)
+char *get_line(char *arr)
 {
     char *line;
     int indx;
 
     indx = 0;
-    if(!arr[indx])
+    if (!arr[indx])
         return (NULL);
     while (arr[indx] && arr[indx] != '\n')
-		indx++;
-    line = malloc(indx + 1);
-	if (!line)
+        indx++;
+    line = (char *)malloc(sizeof(char) * (indx + 2));
+    if (!line)
         return (NULL);
     indx = 0;
     while (arr[indx] && arr[indx] != '\n')
@@ -45,21 +46,21 @@ static char *get_line(char *arr)
         line[indx] = arr[indx];
         indx++;
     }
-    if(arr[indx] == '\n')
+    if (arr[indx] == '\n')
     {
-        line[indx] = '\n';
+        line[indx] = arr[indx];
         indx++;
     }
     line[indx] = '\0';
-    return(line);
+    return (line);
 }
 
-static char *read_arr(int fd, char *arr)
+char *read_arr(int fd, char *arr)
 {
     char *temp;
     int size;
-    
-    temp = malloc(BUFFER_SIZE + 1);
+
+    temp = malloc((BUFFER_SIZE + 1) * sizeof(char));
     if (!temp)
         return (NULL);
     size = 1;
@@ -82,8 +83,8 @@ char *get_next_line(int fd)
 {
     char *line;
     static char *arr[4096];
-    
-    if (fd < 0 || BUFFER_SIZE <= 0)
+
+    if (fd < 0 || BUFFER_SIZE <= 0 || fd > 4096)
         return (0);
     arr[fd] = read_arr(fd, arr[fd]);
     if (!arr[fd])
@@ -101,6 +102,6 @@ int main()
     {
         printf("%s", get_next_line(i));
     }
-    
+
     return 0;
 } */
